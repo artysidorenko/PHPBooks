@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        {% include "head.twig" %}
+    </head>
+
+    <body>
+        <div class="bookstore__container">
+    
+            <h1 class="bookstore__heading">Bookstore Catalogue</h1>
+            
+            {% include "search.twig" %}
+            {% if error is defined %} <p class="bookstore__error">{{ error }}</p> {% endif %}
+            {% if success is defined %} <p class="bookstore__error">Book has been updated!</p> {% endif %}
+            {% if books is defined %} {{ include("book_list.twig", books) }} {% endif %}
+            {% if book is defined %} {{ include("book_detail.twig", {'book': book, 'edit': edit }) }} {% endif %}
+    
+        </div>
+    </body>
+
+</html>

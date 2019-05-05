@@ -1,0 +1,6 @@
+<h2 class="bookList__heading">Results:</h2>
+<div class="bookList__container">
+  {% for book in books %}
+  <a class="bookList__item" href="book/{{ book.id }}">{{ book.title }}</a>
+  {% endfor %}
+</div>
