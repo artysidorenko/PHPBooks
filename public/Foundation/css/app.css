@@ -93,15 +93,14 @@
   border-radius: 10px;
 }
 
-.bookDetail__input {
+.bookDetail__input, .bookDetail__input * {
   border: none;
   margin: 5px;
   padding: 5px;
   border-radius: 5px;
-
 }
 
-.bookDetail__description {
+.bookDetail__description, .bookDetail__description * {
   text-align: left;
   display: block;
   width: 100%;
@@ -109,7 +108,7 @@
 }
 
 
-.bookDetail__price {
+.bookDetail__price, .bookDetail__price * {
   text-align: center!important;
   width: 75px;
   display: inline-block;

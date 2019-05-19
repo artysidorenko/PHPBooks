@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BookController extends AbstractController
@@ -107,24 +110,42 @@ class BookController extends AbstractController
     /**
      * @Route("/new", name="book")
      */
-    public function newDummy()
+    public function newBook(Request $request)
     {
-        // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to your action: index(EntityManagerInterface $entityManager)
-        $entityManager = $this->getDoctrine()->getManager();
-
+        // creates a task and gives it some dummy data for this example
         $book = new Book();
-        $book->setTitle('Keyboard Book');
-        $book->setPrice(1999);
-        $book->setDescription('Ergonomic and stylish book!');
+        $book->setTitle('Write a blog post');
+        $book->setDescription('test');
+        $book->setPrice(15);
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($book);
+        $form = $this->createFormBuilder($book)
+            ->add('title', TextType::class)
+            ->add('description', TextareaType::class)
+            ->add('price', IntegerType::class)
+            ->add('save', SubmitType::class, ['label' => 'Add New Book'])
+            ->getForm();
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+        $form->handleRequest($request);
 
-        return new Response('Saved new product with id ' . $book->getId());
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$book` variable has also been updated
+            $book = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Book is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($book);
+            $entityManager->flush();
+
+            return $this->render('base.twig', ['book' => $result, 'edit' => false, 'success' => true]);
+
+        }
+
+        return $this->render('new.twig', [
+            'form' => $form->createView(),
+        ]);
+
     }
 
 }

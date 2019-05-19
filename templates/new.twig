@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+<head>
+  {% include "head.twig" %}
+</head>
+<body>
+  <div class="bookDetail__container">
+    <div class="my-custom-class-for-errors">
+      {{ form_errors(form) }}
+    </div>
+
+    <div class="row">
+      <div class="col">
+        {{ form_row(form.title, {'class' : 'bookDetail__input'}) }}
+      </div>
+      <div class="col bookDetail__input" id="some-custom-id">
+        {{ form_row(form.description, {'class' : 'bookDetail__input bookDetail__description'}) }}
+      </div>
+      <div class="col bookDetail__input" id="some-custom-id">
+        {{ form_row(form.price, {'class' : 'bookDetail__input bookDetail__price'}) }}
+      </div>
+    </div>
+  </div>
+</body>
+{{ form_end(form) }}
