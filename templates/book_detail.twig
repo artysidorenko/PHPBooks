@@ -1,34 +1,32 @@
-<h2 class="bookList__heading">Current Details:</h2>
+<h2 class="bookDetail__heading">Book Details</h2>
 
 {% if edit is same as(false) %}
   <div class="bookDetail__container">
     <strong>Title</strong>
     <p>{{ book['title'] }}</p>
     <strong>Description</strong>
-    <p class="bookDetails__description">{{ book['description'] }}</p>
+    <p class="bookDetail__description">{{ book['description'] }}</p>
     <strong>Price: </strong><span>{{ book['price'] }}</span>
-    <br>
-    <a class="list__button" href="/book/{{ book['id'] }}?edit=1">Edit Book Details?</a>
+    <a class="bookDetail__button" href="/book/{{ book['id'] }}?edit=1">Edit Book Details?</a>
   </div>
 {% endif %}
 
 {% if edit is same as(true) %}
-<div class="bookDetail__container">
-  <form action="/edit" method="POST" id="editForm"></form>
-  <strong>Title</strong>
-  <input class="bookDetail__input" name="id" form="editForm" type="hidden" value="{{ book['id'] }}" />
-  <input class="bookDetail__input" name="title" form="editForm" type="textarea" value="{{ book['title'] }}" />
-  <strong>Description</strong>
-  <textarea class="bookDetail__description" name="description" form="editForm">
-    {{ book['description'] }}
-  </textarea>
-  <strong>Price: </strong><input class="bookDetail__price" name="price" form="editForm" type="number" value="{{book['price']}}" />
-  <br>
-  <div class="search__buttons--aligned">
-    <input class="search__button" form="editForm" type="submit" value="Submit Changes"/>
-    <a class="list__button" href="{{ book['id'] }}?edit=0">Cancel Edit</a>
+  <div class="bookDetail__container">
+    <form class="form--invisible" action="/edit" method="POST" id="editForm"></form>
+    <strong>Title</strong>
+    <input class="bookDetail__input" name="id" form="editForm" type="hidden" value="{{ book['id'] }}" />
+    <input class="bookDetail__input" name="title" form="editForm" type="textarea" value="{{ book['title'] }}" />
+    <strong>Description</strong>
+    <textarea class="bookDetail__textarea" name="description" form="editForm">
+      {{ book['description'] }}
+    </textarea>
+    <strong>Price: </strong><input class="bookDetail__price" name="price" form="editForm" type="number" value="{{book['price']}}" />
+    <div class="submit__box">
+      <input class="submit__button" form="editForm" type="submit" value="Submit Changes"/>
+      <a class="submit__anchor" href="{{ book['id'] }}?edit=0">Cancel Edit</a>
+    </div>
   </div>
-</div>
 {% endif %}
 
 <br>

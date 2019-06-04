@@ -1,10 +1,10 @@
-<form class="search__form" method="GET" id="searchForm" action="/find/">
+<form class="form--invisible" method="GET" id="searchForm" action="/find/">
 </form>
 
-<div class="search__container">
-  <input form="searchForm" class="search__input" type="text" name="query" placeholder="Search for book title" />
-  <div class="search__buttons--aligned">
+<div class="search">
+  <div class="search__box">
+    <input form="searchForm" class="search__input" type="text" name="query" placeholder="Search for book title" />
     <input form="searchForm" class="search__button" type="submit" name="submitSearch" value="Search By Title" />
-    <a class="list__button" href="/list">List All Books</a>
+    <a class="search__anchor" href="/list">List All Books</a>
   </div>
 </div>

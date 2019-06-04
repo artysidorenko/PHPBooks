@@ -1,6 +1,11 @@
-<h2 class="bookList__heading">Results:</h2>
+<h2 class="bookList__heading">Results</h2>
 <div class="bookList__container">
   {% for book in books %}
-  <a class="bookList__item" href="book/{{ book.id }}">{{ book.title }}</a>
+  <div class="bookList__item">
+    <a class="bookList__link" href="book/{{ book.id }}">
+      <img src="https://img.icons8.com/metro/26/000000/literature.png">
+      <span>{{ book.title }}</span>
+    </a>
+  </div>
   {% endfor %}
 </div>

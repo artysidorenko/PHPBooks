@@ -1,0 +1,209 @@
+@import 'mixins';
+@import 'variables';
+
+.form--invisible {
+  display: none;
+}
+
+body {
+  background-color: $bg-grey;
+  white-space: pre-wrap;
+  line-height: 0.8;
+  font-family: 'Frank Ruhr Libre', serif;
+}
+
+.container {
+  height: 100vh;
+  box-sizing: border-box;
+
+  .heading {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    width: 75%;
+    color: black;
+    padding: 10px 0px;
+    white-space: normal;
+
+    .heading__link {
+      @include reset-anchor();
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .heading__img {
+      height: 50px;
+    }
+    .heading__span {
+      padding: 0 10px;
+    }
+  }
+
+  .bookstore__error {
+    text-align: center;
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center!important;
+    white-space: normal;
+
+    .search__box {
+      @include flex-row-center();
+      border: 1px solid $border-grey;
+      border-radius: 5px;
+      padding: 10px;
+
+      * {
+        @include button-sized();
+        @include cursor-highlight();
+        margin: 0 5px;
+      }
+      input {
+        @include reset-input();
+      }
+      .search__anchor {
+        @include reset-anchor();
+        display: inline-block;
+        line-height: 30px;   // note: need to subtract padding from height to get inner line-height
+      }
+      .search__button, .search__anchor {
+        background-color: lightgrey;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .footer {
+    background-color: #d7dfea;
+    width: 100%;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    line-height: 5px;
+    font-size: small;
+
+    .footer__container {
+      display: inline-block;
+      width: 100%;
+
+      * {
+        margin: 0;
+        height: 5px;
+      }
+      .footer__link {
+        @include reset-anchor();
+      }
+    }
+  }
+
+  .bookList__heading {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.25em;
+  }
+
+  .bookList__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .bookList__item {
+      margin: 10px 10px;
+      @include flex-row-center();
+
+      .bookList__link {
+        @include reset-anchor();
+        @include flex-row-center();
+        @include cursor-highlight();
+        img {
+          height: 15px;
+        }
+        span {
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+
+  .bookDetail__heading {
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+
+  .bookDetail__container {
+    background-color: $bg-grey-darkened;
+    border: 1px solid $border-grey;
+    max-width: 750px;
+    padding: 10px 30px;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+
+    * {
+      margin-bottom: 10px;
+    }
+    .bookDetail__description {
+      text-align: left;
+      display: block;
+      width: 100%;
+      min-height: 100px;
+      line-height: 1;
+    }
+    .bookDetail__button {
+      @include reset-anchor();
+      @include cursor-highlight();
+      @include button-sized();
+
+      display: block;
+      margin: auto;
+      width: 150px;
+      background-color: lightgrey;
+    }
+    .bookDetail__input {
+      @include reset-input;
+      @include button-sized;
+      width: 100%;
+    }
+    .bookDetail__textarea {
+      @include reset-input;
+      @include button-sized;
+      width: 100%;
+      min-height: 150px;
+    }
+    .bookDetail__price {
+      @include reset-input;
+      @include button-sized;
+      text-align: center!important;
+      width: 75px;
+      display: inline-block;
+    }
+
+    .submit__box {
+      @include flex-row-center();
+
+      * {
+        @include button-sized();
+        @include cursor-highlight();
+        margin: 0 5px;
+      }
+      input {
+        @include reset-input();
+      }
+      .submit__anchor {
+        @include reset-anchor();
+        display: inline-block;
+        line-height: 30px;   // note: need to subtract padding from height to get inner line-height
+      }
+      .submit__button, .submit__anchor {
+        background-color: lightgrey;
+        vertical-align: middle;
+      }
+    }
+
+  }
+}

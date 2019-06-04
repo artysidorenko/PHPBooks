@@ -1,0 +1,22 @@
+@media screen and (max-width: 666px) {
+  .search__box {
+    flex-wrap: wrap;
+    max-width: 90%;
+    padding-top: 20px!important;
+    padding-bottom: 20px!important;
+
+    .search__button, .search__anchor {
+      margin-top: 10px!important;
+    }
+  }
+
+  .footer {
+    font-size: 0.7em!important;
+  }
+}
+
+@media screen and (max-width: 566px) {
+  .footer {
+    font-size: 0.6em!important;
+  }
+}

@@ -6,9 +6,14 @@
     </head>
 
     <body>
-        <div class="bookstore__container">
+        <div class="container">
     
-            <h1 class="bookstore__heading">Bookstore Catalogue</h1>
+            <h1 class="heading">
+                <a href='/' class="heading__link">
+                    <img class="heading__img" src="https://img.icons8.com/ios/100/000000/literature.png">
+                    <span class="heading__span">Bookstore Catalogue</span>
+                </a>
+            </h1>
             
             {% include "search.twig" %}
             {% if error is defined %} <p class="bookstore__error">{{ error }}</p> {% endif %}
@@ -16,6 +21,9 @@
             {% if books is defined %} {{ include("book_list.twig", books) }} {% endif %}
             {% if book is defined %} {{ include("book_detail.twig", {'book': book, 'edit': edit }) }} {% endif %}
     
+            <footer class="footer">
+                {% include "footer.twig" %}
+            </footer>
         </div>
     </body>
 
